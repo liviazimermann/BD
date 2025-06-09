@@ -1,7 +1,7 @@
 <%= form_with(model: estoque) do |form| %>
   <% if estoque.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(estoque.errors.count, "error") %> prohibited this estoque from being saved:</h2>
+      <h2><%= pluralize(estoque.errors.count, "erro") %> impediram este estoque de ser salvo:</h2>
 
       <ul>
         <% estoque.errors.each do |error| %>
@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :id_produto, style: "display: block" %>
-    <%= form.number_field :id_produto %>
+  <div class="mb-3">
+    <%= form.label :id_produto, "Produto", class: "form-label" %>
+    <%= form.collection_select :id_produto, Produto.all, :id, :nome, {}, class: "form-select" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :quantidade_disponivel, "Quantidade Disponível", class: "form-label" %>
+    <%= form.number_field :quantidade_disponivel, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :data_reposicao, "Data de Reposição", class: "form-label" %>
+    <%= form.date_field :data_reposicao, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :quantidade_disponivel, style: "display: block" %>
-    <%= form.number_field :quantidade_disponivel %>
-  </div>
-
-  <div>
-    <%= form.label :data_reposicao, style: "display: block" %>
-    <%= form.date_field :data_reposicao %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,16 +1,39 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Clientes" %>
-
-<h1>Clientes</h1>
-
-<div id="clientes">
-  <% @clientes.each do |cliente| %>
-    <%= render cliente %>
-    <p>
-      <%= link_to "Show this cliente", cliente %>
-    </p>
-  <% end %>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Clientes</h1>
+  <%= link_to "Adicionar Cliente", new_cliente_path, class: "btn btn-success" %>
 </div>
 
-<%= link_to "New cliente", new_cliente_path %>
+<% if notice %>
+  <div class="notice">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th class="text-end">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @clientes.each do |cliente| %>
+            <tr>
+              <td><%= cliente.id %></td>
+              <td><%= cliente.nome %></td>
+              <td class="text-end">
+                <%= link_to "Ver", cliente, class: "btn btn-info btn-sm" %>
+                <%= link_to "Editar", edit_cliente_path(cliente), class: "btn btn-warning btn-sm" %>
+                <%= button_to "Excluir", cliente, method: :delete, class: "btn btn-danger btn-sm", form: { style: 'display: inline-block' } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

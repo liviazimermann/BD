@@ -1,16 +1,43 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Estoques" %>
-
-<h1>Estoques</h1>
-
-<div id="estoques">
-  <% @estoques.each do |estoque| %>
-    <%= render estoque %>
-    <p>
-      <%= link_to "Show this estoque", estoque %>
-    </p>
-  <% end %>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Estoque</h1>
+  <%= link_to "Adicionar Estoque", new_estoque_path, class: "btn btn-success" %>
 </div>
 
-<%= link_to "New estoque", new_estoque_path %>
+<% if notice %>
+  <div class="notice">
+    <%= notice %>
+  </div>
+<% end %>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Data de Reposição</th>
+            <th class="text-end">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @estoques.each do |estoque| %>
+            <tr>
+              <td><%= estoque.id %></td>
+              <td><%= Produto.find(estoque.id_produto).nome %></td>
+              <td><%= estoque.quantidade_disponivel %></td>
+              <td><%= estoque.data_reposicao&.strftime("%d/%m/%Y") %></td>
+              <td class="text-end">
+                <%= link_to "Ver", estoque, class: "btn btn-info btn-sm" %>
+                <%= link_to "Editar", edit_estoque_path(estoque), class: "btn btn-warning btn-sm" %>
+                <%= button_to "Excluir", estoque, method: :delete, class: "btn btn-danger btn-sm", form: { style: 'display: inline-block' } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

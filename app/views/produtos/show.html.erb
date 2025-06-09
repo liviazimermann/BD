@@ -3,8 +3,8 @@
 <%= render @produto %>
 
 <div>
-  <%= link_to "Edit this produto", edit_produto_path(@produto) %> |
-  <%= link_to "Back to produtos", produtos_path %>
+  <%= link_to "Editar Produto", edit_produto_path(@produto), class: "btn btn-warning" %> |
+  <%= link_to "Voltar para Produtos", produtos_path, class: "btn btn-secondary" %>
 
-  <%= button_to "Destroy this produto", @produto, method: :delete %>
+  <%= button_to "Excluir Produto", @produto, method: :delete, class: "btn btn-danger mt-2" %>
 </div>

@@ -3,8 +3,8 @@
 <%= render @estoque %>
 
 <div>
-  <%= link_to "Edit this estoque", edit_estoque_path(@estoque) %> |
-  <%= link_to "Back to estoques", estoques_path %>
+  <%= link_to "Editar Estoque", edit_estoque_path(@estoque), class: "btn btn-warning" %> |
+  <%= link_to "Voltar para Estoque", estoques_path, class: "btn btn-secondary" %>
 
-  <%= button_to "Destroy this estoque", @estoque, method: :delete %>
+  <%= button_to "Excluir Estoque", @estoque, method: :delete, class: "btn btn-danger mt-2" %>
 </div>

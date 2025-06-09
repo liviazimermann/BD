@@ -22,10 +22,12 @@ class EstoquesController < ApplicationController
   # POST /estoques or /estoques.json
   def create
     @estoque = Estoque.new(estoque_params)
-
+    # SQL gerado:
+    #   INSERT INTO estoques (id_produto, quantidade_disponivel, data_reposicao)
+    #   VALUES (?, ?, ?)
     respond_to do |format|
       if @estoque.save
-        format.html { redirect_to @estoque, notice: "Estoque was successfully created." }
+        format.html { redirect_to @estoque, notice: "Estoque foi criado com sucesso." }
         format.json { render :show, status: :created, location: @estoque }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,9 +38,13 @@ class EstoquesController < ApplicationController
 
   # PATCH/PUT /estoques/1 or /estoques/1.json
   def update
+    # SQL gerado:
+    #   UPDATE estoques
+    #   SET id_produto = ?, quantidade_disponivel = ?, data_reposicao = ?
+    #   WHERE id = ?
     respond_to do |format|
       if @estoque.update(estoque_params)
-        format.html { redirect_to @estoque, notice: "Estoque was successfully updated." }
+        format.html { redirect_to @estoque, notice: "Estoque foi atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @estoque }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,21 +55,24 @@ class EstoquesController < ApplicationController
 
   # DELETE /estoques/1 or /estoques/1.json
   def destroy
+    # SQL gerado:
+    #   DELETE FROM estoques
+    #   WHERE id = ?
     @estoque.destroy!
 
     respond_to do |format|
-      format.html { redirect_to estoques_path, status: :see_other, notice: "Estoque was successfully destroyed." }
+      format.html { redirect_to estoques_path, status: :see_other, notice: "Estoque foi excluído com sucesso." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Usa callbacks para compartilhar configurações ou restrições comuns entre ações.
     def set_estoque
       @estoque = Estoque.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
+    # Permite apenas uma lista de parâmetros confiáveis.
     def estoque_params
       params.expect(estoque: [ :id_produto, :quantidade_disponivel, :data_reposicao ])
     end

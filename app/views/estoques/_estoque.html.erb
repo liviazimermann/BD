@@ -1,17 +1,11 @@
 <div id="<%= dom_id estoque %>">
   <p>
-    <strong>Id produto:</strong>
-    <%= estoque.id_produto %>
+    <strong>ID:</strong>
+    <%= estoque.id %>
   </p>
 
   <p>
-    <strong>Quantidade disponivel:</strong>
-    <%= estoque.quantidade_disponivel %>
+    <strong>Produto:</strong>
+    <%= Produto.find(estoque.id_produto).nome %>
   </p>
-
-  <p>
-    <strong>Data reposicao:</strong>
-    <%= estoque.data_reposicao %>
-  </p>
-
 </div>

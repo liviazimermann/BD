@@ -22,10 +22,12 @@ class VendasController < ApplicationController
   # POST /vendas or /vendas.json
   def create
     @venda = Venda.new(venda_params)
-
+    # SQL gerado:
+    #   INSERT INTO vendas (id_cliente, data_venda, valor_total)
+    #   VALUES (?, ?, ?)
     respond_to do |format|
       if @venda.save
-        format.html { redirect_to @venda, notice: "Venda was successfully created." }
+        format.html { redirect_to @venda, notice: "Venda foi criada com sucesso." }
         format.json { render :show, status: :created, location: @venda }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,9 +38,13 @@ class VendasController < ApplicationController
 
   # PATCH/PUT /vendas/1 or /vendas/1.json
   def update
+    # SQL gerado:
+    #   UPDATE vendas
+    #   SET id_cliente = ?, data_venda = ?, valor_total = ?
+    #   WHERE id = ?
     respond_to do |format|
       if @venda.update(venda_params)
-        format.html { redirect_to @venda, notice: "Venda was successfully updated." }
+        format.html { redirect_to @venda, notice: "Venda foi atualizada com sucesso." }
         format.json { render :show, status: :ok, location: @venda }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,21 +55,24 @@ class VendasController < ApplicationController
 
   # DELETE /vendas/1 or /vendas/1.json
   def destroy
+    # SQL gerado:
+    #   DELETE FROM vendas
+    #   WHERE id = ?
     @venda.destroy!
 
     respond_to do |format|
-      format.html { redirect_to vendas_path, status: :see_other, notice: "Venda was successfully destroyed." }
+      format.html { redirect_to vendas_path, status: :see_other, notice: "Venda foi excluída com sucesso." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Usa callbacks para compartilhar configurações ou restrições comuns entre ações.
     def set_venda
       @venda = Venda.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
+    # Permite apenas uma lista de parâmetros confiáveis.
     def venda_params
       params.expect(venda: [ :id_cliente, :data_venda, :valor_total ])
     end
