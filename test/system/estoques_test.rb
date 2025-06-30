@@ -12,34 +12,34 @@ class EstoquesTest < ApplicationSystemTestCase
 
   test "should create estoque" do
     visit estoques_url
-    click_on "New estoque"
+    click_on "Novo estoque"
 
     fill_in "Data reposicao", with: @estoque.data_reposicao
     fill_in "Id produto", with: @estoque.id_produto
     fill_in "Quantidade disponivel", with: @estoque.quantidade_disponivel
-    click_on "Create Estoque"
+    click_on "Criar Estoque"
 
-    assert_text "Estoque was successfully created"
-    click_on "Back"
+    assert_text "Estoque criado com sucesso"
+    click_on "Voltar"
   end
 
   test "should update Estoque" do
     visit estoque_url(@estoque)
-    click_on "Edit this estoque", match: :first
+    click_on "Editar este estoque", match: :first
 
     fill_in "Data reposicao", with: @estoque.data_reposicao
     fill_in "Id produto", with: @estoque.id_produto
     fill_in "Quantidade disponivel", with: @estoque.quantidade_disponivel
-    click_on "Update Estoque"
+    click_on "Atualizar Estoque"
 
-    assert_text "Estoque was successfully updated"
-    click_on "Back"
+    assert_text "Estoque atualizado com sucesso"
+    click_on "Voltar"
   end
 
   test "should destroy Estoque" do
     visit estoque_url(@estoque)
-    click_on "Destroy this estoque", match: :first
+    click_on "Excluir este estoque", match: :first
 
-    assert_text "Estoque was successfully destroyed"
+    assert_text "Estoque excluído com sucesso"
   end
 end

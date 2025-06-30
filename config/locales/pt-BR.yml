@@ -1,0 +1,50 @@
+pt-BR:
+  hello: "Olá mundo"
+  
+  # Traduções para formulários
+  helpers:
+    submit:
+      create: "Criar %{model}"
+      update: "Atualizar %{model}"
+      submit: "Salvar %{model}"
+  
+  # Traduções para mensagens de sucesso
+  notice:
+    created: "%{model} criado com sucesso."
+    updated: "%{model} atualizado com sucesso."
+    destroyed: "%{model} excluído com sucesso."
+  
+  # Traduções para botões
+  buttons:
+    back: "Voltar"
+    edit: "Editar"
+    delete: "Excluir"
+    show: "Ver"
+    new: "Novo"
+    create: "Criar"
+    update: "Atualizar"
+    save: "Salvar"
+    cancel: "Cancelar"
+  
+  # Traduções para modelos
+  models:
+    cliente: "Cliente"
+    clientes: "Clientes"
+    produto: "Produto"
+    produtos: "Produtos"
+    estoque: "Estoque"
+    estoques: "Estoques"
+  
+  # Traduções para atributos
+  attributes:
+    cliente:
+      nome: "Nome"
+      email: "Email"
+      telefone: "Telefone"
+    produto:
+      nome: "Nome"
+      preco_unitario: "Preço Unitário"
+    estoque:
+      id_produto: "Produto"
+      quantidade_disponivel: "Quantidade Disponível"
+      data_reposicao: "Data de Reposição" 

@@ -12,32 +12,27 @@ class ProdutosTest < ApplicationSystemTestCase
 
   test "should create produto" do
     visit produtos_url
-    click_on "New produto"
-
+    click_on "Novo produto"
     fill_in "Nome", with: @produto.nome
     fill_in "Preco unitario", with: @produto.preco_unitario
-    click_on "Create Produto"
-
-    assert_text "Produto was successfully created"
-    click_on "Back"
+    click_on "Criar Produto"
+    assert_text "Produto criado com sucesso"
+    click_on "Voltar"
   end
 
   test "should update Produto" do
     visit produto_url(@produto)
-    click_on "Edit this produto", match: :first
-
+    click_on "Editar este produto", match: :first
     fill_in "Nome", with: @produto.nome
     fill_in "Preco unitario", with: @produto.preco_unitario
-    click_on "Update Produto"
-
-    assert_text "Produto was successfully updated"
-    click_on "Back"
+    click_on "Atualizar Produto"
+    assert_text "Produto atualizado com sucesso"
+    click_on "Voltar"
   end
 
   test "should destroy Produto" do
     visit produto_url(@produto)
-    click_on "Destroy this produto", match: :first
-
-    assert_text "Produto was successfully destroyed"
+    click_on "Excluir este produto", match: :first
+    assert_text "Produto excluído com sucesso"
   end
 end

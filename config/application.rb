@@ -6,7 +6,7 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module VendasApp
+module SistemaGestao
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
@@ -23,5 +23,9 @@ module VendasApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    # Configuração de idioma padrão
+    config.i18n.default_locale = :'pt-BR'
+    config.i18n.available_locales = [:'pt-BR', :en]
   end
 end

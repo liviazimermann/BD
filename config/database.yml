@@ -25,13 +25,13 @@ default: &default
 
 development:
   <<: *default
-  database: vendas_app_development
+  database: sistema_gestao_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: vendas_app
+  #username: sistema_gestao
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
@@ -51,7 +51,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: vendas_app_test
+  database: sistema_gestao_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -75,15 +75,15 @@ test:
 #
 production:
   <<: *default
-  database: vendas_app_production
-  username: vendas_app
-  password: <%= ENV['VENDAS_APP_DATABASE_PASSWORD'] %>
+  database: sistema_gestao_production
+  username: sistema_gestao
+  password: <%= ENV['SISTEMA_GESTAO_DATABASE_PASSWORD'] %>
   cache:
-    database: vendas_app_production_cache
+    database: sistema_gestao_production_cache
     migrations_paths: db/cache_migrate
   queue:
-    database: vendas_app_production_queue
+    database: sistema_gestao_production_queue
     migrations_paths: db/queue_migrate
   cable:
-    database: vendas_app_production_cable
+    database: sistema_gestao_production_cable
     migrations_paths: db/cable_migrate
